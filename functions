@@ -1,0 +1,46 @@
+set -e
+
+cd $(dirname $0)
+base_dir="$PWD"
+cd - >/dev/null
+
+prefix="$base_dir/root"
+export PATH="$prefix/bin:$PATH"
+
+MAKE="make -j$(sysctl -n hw.ncpu)"
+
+# The minimum macOS version that compiled code will run on.  See:
+# https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/cross_development/Configuring/configuring.html
+export MACOSX_DEPLOYMENT_TARGET=10.13
+export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+
+# download URL [FILENAME] SHA1SUM
+download() {
+	url="$1"
+	shift
+
+	if [ "$#" -eq 2 ]; then
+		filename="download/$1"
+		shift
+	else
+		filename="download/$(basename "$url")"
+	fi
+
+	cksum_expected="$1"
+
+	if [ ! -f "$filename" ]; then
+		curl -L -o "$filename" "$url"
+	fi
+
+	if [ -f "$filename.cksum" ]; then
+		cksum_got="$(<$filename.cksum)"
+		[ "$cksum_got" = "$cksum_expected" ] && return
+	fi
+
+	cksum_got="$(shasum -a 256 --binary "$filename" | awk '{ print $1 }')"
+	if [ "$cksum_got" != "$cksum_expected" ]; then
+		echo "checksum mismatch, expected $cksum_expected, got $cksum_got"
+		return 1
+	fi
+	echo "$cksum_got" >"$filename.cksum"
+}
