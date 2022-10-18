@@ -7,7 +7,7 @@ These scripts create a macOS build environment for compiling
 
 2. Build all dependencies::
 
-    $ ./pkg-config.sh && ./cmake.sh && ./qt.sh && ./libogg.sh && ./libvorbis.sh && ./portaudio.sh
+    $ ./pkg-config.sh && ./cmake.sh && ./qt.sh && ./libogg.sh && ./libvorbis.sh && ./portaudio.sh && ./libsamplerate.sh
 
 The build output is installed to the root/ directory.
 
