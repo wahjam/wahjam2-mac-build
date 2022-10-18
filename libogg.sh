@@ -7,6 +7,5 @@ cd build
 rm -rf libogg-*
 tar xf ../download/libogg-*.tar.gz
 cd libogg-*
-patch -p1 <../../libogg-stdint.patch
 ./configure --prefix="$prefix"
 $MAKE install
