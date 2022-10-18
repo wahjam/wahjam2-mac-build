@@ -14,9 +14,13 @@ The build output is installed to the root/ directory.
 Compilation takes place in the build/ directory. Build errors can be
 investigated in that directory.
 
-3. Build Wahjam2::
+3. Install the meson build system::
 
-    $ export PATH=path/to/root/bin:$PATH
+    $ pip3 install --user meson
+
+4. Build Wahjam2::
+
+    $ export PATH=path/to/root/bin:~/Library/Python/3.8/bin:$PATH
     $ cd wahjam2
     $ meson setup build
     $ meson compile -C build
