@@ -1,7 +1,7 @@
 #!/bin/bash
 . functions
 
-download "https://download.qt.io/archive/qt/6.3/6.3.0/single/qt-everywhere-src-6.3.0.tar.xz" "cd2789cade3e865690f3c18df58ffbff8af74cc5f01faae50634c12eb52dd85b"
+download "https://download.qt.io/archive/qt/6.5/6.5.0/single/qt-everywhere-src-6.5.0.tar.xz" "dba376e110e53895c7c827eea389dc12aa9c45862cd197d2f0d37ee472baf0b0"
 
 cd build
 rm -rf qt-everywhere-*
