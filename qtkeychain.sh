@@ -9,5 +9,5 @@ cd build
 rm -rf qtkeychain-*
 tar xf "../download/qtkeychain-v$VERSION.tar.gz"
 cd "qtkeychain-$VERSION"
-cmake --install-prefix="$prefix" -S . -B . -DBUILD_WITH_QT6=on -DBUILD_TRANSLATIONS=off
+cmake --install-prefix="$prefix" -S . -B . -DBUILD_WITH_QT6=on -DBUILD_TRANSLATIONS=off -DCMAKE_SKIP_RPATH=on -DCMAKE_MACOSX_RPATH=off '-DCMAKE_INSTALL_NAME_DIR=$<INSTALL_PREFIX>/lib'
 make install
