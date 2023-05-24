@@ -7,6 +7,10 @@ cd build
 rm -rf qt-everywhere-*
 tar xf ../download/qt-everywhere-*.tar.xz
 cd qt-everywhere-*
+
+# Pass in CMake options to disable rpath since -no-rpath currently doesn't work:
+# https://bugreports.qt.io/browse/QTBUG-109820
+
 ./configure -prefix "$prefix" \
 	    -shared \
 	    -no-static \
@@ -60,5 +64,10 @@ cd qt-everywhere-*
 	    -skip qtwebview \
 	    -skip qtwinextras \
 	    -skip qtx11extras \
-	    -skip qtxmlpatterns
-$MAKE install
+	    -skip qtxmlpatterns \
+	    -- \
+	    -DCMAKE_SKIP_RPATH=ON \
+	    -DCMAKE_MACOSX_RPATH=OFF \
+            '-DCMAKE_INSTALL_NAME_DIR=$<INSTALL_PREFIX>/lib'
+cmake --build . --parallel
+cmake --install .
