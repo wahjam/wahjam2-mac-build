@@ -1,4 +1,6 @@
 #!/bin/bash
+# SPDX-License-Identifier: Apache-2.0
+
 . functions
 
 download "http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.gz" "0e982409a9c3fc82ee06e08205b1355e5c6aa4c36bca58146ef399621b0ce5ab"

@@ -1,4 +1,6 @@
 #!/bin/bash
+# SPDX-License-Identifier: Apache-2.0
+
 . functions
 
 download "https://download.qt.io/archive/qt/6.5/6.5.0/single/qt-everywhere-src-6.5.0.tar.xz" "dba376e110e53895c7c827eea389dc12aa9c45862cd197d2f0d37ee472baf0b0"
