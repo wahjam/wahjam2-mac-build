@@ -68,6 +68,7 @@ cd qt-everywhere-*
 	    -skip qtx11extras \
 	    -skip qtxmlpatterns \
 	    -- \
+	    -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
 	    -DCMAKE_SKIP_RPATH=ON \
 	    -DCMAKE_MACOSX_RPATH=OFF \
             '-DCMAKE_INSTALL_NAME_DIR=$<INSTALL_PREFIX>/lib'
