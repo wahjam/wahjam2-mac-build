@@ -3,7 +3,7 @@
 
 . functions
 
-download "https://download.qt.io/archive/qt/6.5/6.5.0/single/qt-everywhere-src-6.5.0.tar.xz" "dba376e110e53895c7c827eea389dc12aa9c45862cd197d2f0d37ee472baf0b0"
+download "https://download.qt.io/archive/qt/6.5/6.5.3/single/qt-everywhere-src-6.5.3.tar.xz" "7cda4d119aad27a3887329cfc285f2aba5da85601212bcb0aea27bd6b7b544cb"
 
 cd build
 rm -rf qt-everywhere-*
