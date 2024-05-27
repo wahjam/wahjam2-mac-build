@@ -8,5 +8,8 @@ cd build
 rm -rf pkg-config-*
 tar xf ../download/pkg-config-*.tar.gz
 cd pkg-config-*
-./configure --prefix="$prefix" --with-internal-glib
+
+# clang 15 errors due to pkg-config's built-in glib gatomic.c integer conversions
+CFLAGS="$CFLAGS -Wno-int-conversion" ./configure --prefix="$prefix" --with-internal-glib
+
 $MAKE install
