@@ -15,6 +15,11 @@ MAKE="make -j$(sysctl -n hw.ncpu)"
 export MACOSX_DEPLOYMENT_TARGET=10.13
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 
+# Build universal binaries/libraries for Apple Silicon and Intel
+export CFLAGS="-arch x86_64 -arch arm64"
+export CXXFLAGS="-arch x86_64 -arch arm64"
+export LDFLAGS="-arch x86_64 -arch arm64"
+
 # download URL [FILENAME] SHA1SUM
 download() {
 	url="$1"

@@ -3,6 +3,12 @@
 
 . functions
 
+# CMAKE_OSX_ARCHITECTURES is set for universal binaries below and it does not
+# work together with -arch compiler flags set by ./functions above.
+unset CFLAGS
+unset CXXFLAGS
+unset LDFLAGS
+
 VERSION_MAJ=6
 VERSION_MIN=5
 VERSION_PATCH=3
