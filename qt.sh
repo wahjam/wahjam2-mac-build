@@ -76,5 +76,5 @@ cd qt-everywhere-src-$VERSION
 	    -DCMAKE_SKIP_RPATH=ON \
 	    -DCMAKE_MACOSX_RPATH=OFF \
 	    '-DCMAKE_INSTALL_NAME_DIR=$<INSTALL_PREFIX>/lib'
-cmake --build . --parallel
+cmake --build . # add --parallel for speed, but it seems to be unreliable :(
 cmake --install .
