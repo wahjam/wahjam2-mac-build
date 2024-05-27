@@ -3,9 +3,9 @@
 
 . functions
 
-VERSION=0.13.2
+VERSION=0.14.3
 
-download "https://github.com/frankosterfeld/qtkeychain/archive/refs/tags/v$VERSION.tar.gz" "qtkeychain-v$VERSION.tar.gz" "20beeb32de7c4eb0af9039b21e18370faf847ac8697ab3045906076afbc4caa5"
+download "https://github.com/frankosterfeld/qtkeychain/archive/refs/tags/$VERSION.tar.gz" "qtkeychain-v$VERSION.tar.gz" "a22c708f351431d8736a0ac5c562414f2b7bb919a6292cbca1ff7ac0849cb0a7"
 
 cd build
 rm -rf qtkeychain-*
