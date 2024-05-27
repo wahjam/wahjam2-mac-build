@@ -3,12 +3,16 @@
 
 . functions
 
-download "https://download.qt.io/archive/qt/6.5/6.5.3/single/qt-everywhere-src-6.5.3.tar.xz" "7cda4d119aad27a3887329cfc285f2aba5da85601212bcb0aea27bd6b7b544cb"
+VERSION_MAJ=6
+VERSION_MIN=5
+VERSION_PATCH=3
+VERSION=$VERSION_MAJ.$VERSION_MIN.$VERSION_PATCH
+download "https://download.qt.io/archive/qt/$VERSION_MAJ.$VERSION_MIN/$VERSION/single/qt-everywhere-src-$VERSION.tar.xz" "7cda4d119aad27a3887329cfc285f2aba5da85601212bcb0aea27bd6b7b544cb"
 
 cd build
-rm -rf qt-everywhere-*
-tar xf ../download/qt-everywhere-*.tar.xz
-cd qt-everywhere-*
+rm -rf qt-everywhere-src-*
+tar xf ../download/qt-everywhere-src-$VERSION.tar.xz
+cd qt-everywhere-src-$VERSION
 
 # Pass in CMake options to disable rpath since -no-rpath currently doesn't work:
 # https://bugreports.qt.io/browse/QTBUG-109820
@@ -68,9 +72,9 @@ cd qt-everywhere-*
 	    -skip qtx11extras \
 	    -skip qtxmlpatterns \
 	    -- \
-	    -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64"
+	    -DCMAKE_OSX_ARCHITECTURES="x86_64;arm64" \
 	    -DCMAKE_SKIP_RPATH=ON \
 	    -DCMAKE_MACOSX_RPATH=OFF \
-            '-DCMAKE_INSTALL_NAME_DIR=$<INSTALL_PREFIX>/lib'
+	    '-DCMAKE_INSTALL_NAME_DIR=$<INSTALL_PREFIX>/lib'
 cmake --build . --parallel
 cmake --install .
