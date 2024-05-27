@@ -9,5 +9,9 @@ cd build
 rm -rf libvorbis-*
 tar xf ../download/libvorbis-*.tar.gz
 cd libvorbis-*
+
+# This flag causes linker errors when building with -arch x86_64 -arch arm64
+sed -i '' 's/-force_cpusubtype_ALL//g' configure
+
 ./configure --prefix="$prefix"
 $MAKE install
