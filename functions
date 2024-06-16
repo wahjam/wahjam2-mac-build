@@ -12,7 +12,8 @@ MAKE="make -j$(sysctl -n hw.ncpu)"
 
 # The minimum macOS version that compiled code will run on.  See:
 # https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/cross_development/Configuring/configuring.html
-export MACOSX_DEPLOYMENT_TARGET=10.13
+# https://en.wikipedia.org/wiki/MacOS_version_history
+export MACOSX_DEPLOYMENT_TARGET=12.0 # Monterey
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 
 # Build universal binaries/libraries for Apple Silicon and Intel
